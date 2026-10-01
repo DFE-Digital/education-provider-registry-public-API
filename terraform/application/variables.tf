@@ -79,7 +79,7 @@ variable "enable_logit" { default = true }
 
 variable "probe_path" {
   type        = string
-  default     = "/healthcheck"
+  default     = "/health"
   description = "Path for the liveness and startup probe. The probe can be disabled by setting this to null."
 }
 

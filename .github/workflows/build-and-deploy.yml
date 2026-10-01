@@ -13,8 +13,8 @@ on:
         - development
         - review
         - test
-        #- preproduction
-        #- production
+        - preproduction
+        - production
       docker-image-tag:
         description: "Docker image tag to deploy (optional)"
         required: true
@@ -33,7 +33,7 @@ on:
 
 env:
   TERRAFORM_BASE: terraform/application
-  HEALTHCHECK_CMD: '/'
+  HEALTHCHECK_CMD: 'health'
 
 jobs:
   build:
@@ -143,7 +143,7 @@ jobs:
         healthcheck: ${{ env.HEALTHCHECK_CMD }}
         teams-webhook-url: ${{ secrets.TEAMS_WEBHOOK_URL }}
         service: ${{ vars.TEAMS_MSG_SERVICE_NAME }}
-        smoke-test: true
+        smoke-test: false
         gcp-wip: ${{ vars.GCP_WIP }}
         gcp-project-id: ${{ vars.GCP_PROJECT_ID }}
 
@@ -173,55 +173,55 @@ jobs:
         healthcheck: ${{ env.HEALTHCHECK_CMD }}
         teams-webhook-url: ${{ secrets.TEAMS_WEBHOOK_URL }}
         service: ${{ vars.TEAMS_MSG_SERVICE_NAME }}
-        smoke-test: true
+        smoke-test: false
         db-seed: ${{ inputs.environment == 'review' && 'true' || 'false' }}
         gcp-wip: ${{ vars.GCP_WIP }}
         gcp-project-id: ${{ vars.GCP_PROJECT_ID }}
 
-#  deploy_domains_infra:
-#    name: Deploy Domains Infrastructure
-#    runs-on: ubuntu-latest
-#    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-#    concurrency: deploy_domains_infra
-#    needs: [deploy]
-#    environment:
-#      name: production
-#    permissions:
-#      id-token: write
+  deploy_domains_infra:
+    name: Deploy Domains Infrastructure
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    concurrency: deploy_domains_infra
+    needs: [deploy]
+    environment:
+      name: production
+    permissions:
+      id-token: write
 
-#    steps:
-#    - name: Deploy Domains Infrastructure
-#      uses: DFE-Digital/github-actions/deploy-domains-infra@master
-#      with:
-#        azure-client-id:  ${{ secrets.AZURE_CLIENT_ID  }}
-#        azure-tenant-id:  ${{ secrets.AZURE_TENANT_ID   }}
-#        azure-subscription-id:  ${{ secrets.AZURE_SUBSCRIPTION_ID   }}
-#        teams-webhook-url: ${{ secrets.TEAMS_WEBHOOK_URL }}
-#        service: ${{ vars.TEAMS_MSG_SERVICE_NAME }}
+    steps:
+    - name: Deploy Domains Infrastructure
+      uses: DFE-Digital/github-actions/deploy-domains-infra@master
+      with:
+        azure-client-id:  ${{ secrets.AZURE_CLIENT_ID  }}
+        azure-tenant-id:  ${{ secrets.AZURE_TENANT_ID   }}
+        azure-subscription-id:  ${{ secrets.AZURE_SUBSCRIPTION_ID   }}
+        teams-webhook-url: ${{ secrets.TEAMS_WEBHOOK_URL }}
+        service: ${{ vars.TEAMS_MSG_SERVICE_NAME }}
 
-#  deploy_domains_env:
-#    name: Deploy Domains to ${{ matrix.domain_environment }} environment
-#    runs-on: ubuntu-latest
-#    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-#    concurrency: deploy_domains_${{ matrix.domain_environment }}
-#    needs: [deploy_domains_infra]
-#    strategy:
-#      max-parallel: 1
-#      matrix:
-#        domain_environment: [development, production]
-#    environment:
-#      name: production
-#    permissions:
-#      id-token: write
+  deploy_domains_env:
+    name: Deploy Domains to ${{ matrix.domain_environment }} environment
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    concurrency: deploy_domains_${{ matrix.domain_environment }}
+    needs: [deploy_domains_infra]
+    strategy:
+      max-parallel: 1
+      matrix:
+        domain_environment: [development, production]
+    environment:
+      name: production
+    permissions:
+      id-token: write
 
-#    steps:
-#    - name: Deploy Domains Environment
-#      uses: DFE-Digital/github-actions/deploy-domains-env@master
-#      with:
-#        azure-client-id:  ${{ secrets.AZURE_CLIENT_ID  }}
-#        azure-tenant-id:  ${{ secrets.AZURE_TENANT_ID   }}
-#        azure-subscription-id:  ${{ secrets.AZURE_SUBSCRIPTION_ID   }}
-#        environment: ${{ matrix.domain_environment }}
-#        healthcheck: healthcheck
-#        teams-webhook-url: ${{ secrets.TEAMS_WEBHOOK_URL }}
-#        service: ${{ vars.TEAMS_MSG_SERVICE_NAME }}
+    steps:
+    - name: Deploy Domains Environment
+      uses: DFE-Digital/github-actions/deploy-domains-env@master
+      with:
+        azure-client-id:  ${{ secrets.AZURE_CLIENT_ID  }}
+        azure-tenant-id:  ${{ secrets.AZURE_TENANT_ID   }}
+        azure-subscription-id:  ${{ secrets.AZURE_SUBSCRIPTION_ID   }}
+        environment: ${{ matrix.domain_environment }}
+        healthcheck: /health
+        teams-webhook-url: ${{ secrets.TEAMS_WEBHOOK_URL }}
+        service: ${{ vars.TEAMS_MSG_SERVICE_NAME }}
