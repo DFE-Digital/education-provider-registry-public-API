@@ -232,3 +232,12 @@ test: test-cluster
 .PHONY: preproduction
 preproduction: production-cluster
 	$(eval include global_config/preproduction.sh)
+
+.PHONY validate-azure-iam:
+validate-azure-iam: composed-variables set-azure-account ## Validate required Entra group permissions. Usage: make <environment> validate-permissions
+	bash scripts/validate-azure-iam.sh "${RESOURCE_GROUP_NAME}" "${AZURE_SUBSCRIPTION}" "$(subst ",,$(AD_GROUP))"
+
+.PHONY validate-azure-domain-iam:
+validate-azure-domain-iam: domains composed-variables set-azure-account ## Validate required Entra group permissions. Usage: make <environment> validate-permissions
+	monitoringResourceGroupName=${AZURE_RESOURCE_PREFIX}-${SERVICE_SHORT}-mn-rg"
+	bash scripts/validate-azure-iam.sh "${monitoringResourceGroupName}" "${AZURE_SUBSCRIPTION}" "$(subst ",,$(AD_GROUP))"
