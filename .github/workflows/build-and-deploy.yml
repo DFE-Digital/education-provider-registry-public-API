@@ -127,7 +127,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        environment: [development,test]
+        environment: [development,test, preproduction, production]
 
     steps:
     - name: Deploy app to ${{ matrix.environment }}
@@ -208,7 +208,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        domain_environment: [development, production]
+        domain_environment: [development, test, preproduction, production]
     environment:
       name: production
     permissions:
