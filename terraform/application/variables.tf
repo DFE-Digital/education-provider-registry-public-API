@@ -83,6 +83,12 @@ variable "probe_path" {
   description = "Path for the liveness and startup probe. The probe can be disabled by setting this to null."
 }
 
+variable "replicas" {
+  type        = number
+  default     = 1
+  description = "Number of replicas for the web application"
+}
+
 locals {
   postgres_ssl_mode = var.enable_postgres_ssl ? "require" : "disable"
 
