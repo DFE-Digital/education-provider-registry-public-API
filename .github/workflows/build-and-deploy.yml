@@ -33,7 +33,7 @@ on:
 
 env:
   TERRAFORM_BASE: terraform/application
-  HEALTHCHECK_CMD: 'health'
+  # HEALTHCHECK_CMD: 'health' - uncomment when prod is in use
 
 jobs:
   build:
