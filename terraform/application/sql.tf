@@ -8,6 +8,8 @@ module "sql" {
   service_short         = var.service_short
   config_short          = var.config_short
 
+  key_vault_id = module.infrastructure_secrets.key_vault_id
+
   public_network_access_enabled = false
   
 }

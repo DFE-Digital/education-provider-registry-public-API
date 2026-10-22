@@ -1,5 +1,5 @@
 module "infrastructure_secrets" {
-  source = "./vendor/modules/aks//aks/secrets"
+  source = "./vendor/modules/azure//azure/secrets"
 
   azure_resource_prefix = var.azure_resource_prefix
   service_short         = var.service_short
