@@ -1,5 +1,5 @@
 module "sql" {
-  source = "./vendor/modules/azure//azure/sql"
+  source = "./vendor/modules/aks//aks/sql"
 
   server_name_suffix    = "edubase"
   environment           = var.environment
@@ -11,5 +11,5 @@ module "sql" {
   key_vault_id = module.infrastructure_secrets.key_vault_id
 
   public_network_access_enabled = false
-  
+
 }
