@@ -77,7 +77,6 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v4
 
-    steps:
     - name: Check out repository
       uses: actions/checkout@v4
 
@@ -126,7 +125,7 @@ jobs:
           use-global-json: true
           coverage-report-path: coverage-sonar/SonarQube.xml
           # sonarscan-exclusions: "src/**/wwwroot/css/site.css"
-          
+
 #  deploy-review-app:
 #    name: Deployment To Review
 #    concurrency: deploy_review_${{ github.event.pull_request.number }}
