@@ -7,6 +7,7 @@
   <Folder Name="/tests/">
     <File Path="tests/Directory.Build.props" />
     <File Path="tests/Directory.Packages.props" />
+    <Project Path="tests/DfE.EducationProviderRegistry.PublicApi.Api.SystemTests/DfE.EducationProviderRegistry.PublicApi.Api.SystemTests.csproj" />
     <Project Path="tests/DfE.EducationProviderRegistry.PublicApi.Api.UnitTests/DfE.EducationProviderRegistry.PublicApi.Api.UnitTests.csproj" />
   </Folder>
 </Solution>
