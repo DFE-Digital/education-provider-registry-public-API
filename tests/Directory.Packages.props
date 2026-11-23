@@ -6,6 +6,8 @@
     <PackageVersion Include="Bogus" Version="35.6.5" />
     <PackageVersion Include="coverlet.msbuild" Version="10.0.1" />
     <PackageVersion Include="DfE.Core.Libraries.Testing" Version="1.0.44" />
+    <PackageVersion Include="DfE.Core.Libraries.IntegrationTests" Version="1.0.44" />
+    <PackageVersion Include="DfE.Core.Libraries.IntegrationTests.Containers" Version="1.0.44" />
     <PackageVersion Include="DfE.EducationProviderRegistry.Core.Query.Contracts.TestDoubles" Version="0.0.57" />
     <PackageVersion Include="DfE.EducationProviderRegistry.Core.Query.Test.Database" Version="0.0.57" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="10.0.15" />

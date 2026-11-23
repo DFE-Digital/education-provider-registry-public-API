@@ -8,17 +8,26 @@ using Xunit.DependencyInjection.Logging;
 
 namespace DfE.EducationProviderRegistry.PublicApi.Api.SystemTests;
 
-public class Startup
+public sealed class Startup
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "XUnit.DependencyInjection calls this through Reflection as part of test startup")]
     public void ConfigureHost(IHostBuilder hostBuilder) =>
             hostBuilder
+                .UseDefaultServiceProvider((options) =>
+                {
+                    options.ValidateScopes = true;
+                    options.ValidateOnBuild = true;
+                })
                 .ConfigureHostConfiguration(builder => { })
                 .ConfigureAppConfiguration((context, builder) =>
                 {
                     builder.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
                     builder.AddJsonFile($"appsettings.{context.HostingEnvironment}.json", optional: true, reloadOnChange: true);
+                    builder.AddEnvironmentVariables();
                 });
 
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "XUnit.DependencyInjection calls this through Reflection as part of test startup")]
     public void ConfigureServices(IServiceCollection services, HostBuilderContext context)
     {
         services.AddOptions<XUnitLoggerOptions>();
