@@ -9,12 +9,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.msbuild"  />
+    <PackageReference Include="coverlet.msbuild" />
     <PackageReference Include="DfE.Core.Libraries.Testing" />
     <PackageReference Include="DfE.EducationProviderRegistry.Core.Query.Contracts.TestDoubles" />
     <PackageReference Include="DfE.EducationProviderRegistry.Core.Query.Test.Database" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
     <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
+    <PackageReference Include="Xunit.DependencyInjection" />
+    <PackageReference Include="Xunit.DependencyInjection.Logging" />
     <PackageReference Include="xunit.v3.mtp-v2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\DfE.EducationProviderRegistry.PublicApi.Api\DfE.EducationProviderRegistry.PublicApi.Api.csproj" />
   </ItemGroup>
 
 </Project>
