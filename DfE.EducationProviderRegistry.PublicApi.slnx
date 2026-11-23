@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <File Path="src/Directory.Build.props" />
+    <File Path="src/Directory.Packages.props" />
+    <Project Path="src/DfE.EducationProviderRegistry.PublicApi.Api/DfE.EducationProviderRegistry.PublicApi.Api.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <File Path="tests/Directory.Build.props" />
+    <File Path="tests/Directory.Packages.props" />
+    <Project Path="tests/DfE.EducationProviderRegistry.PublicApi.Api.UnitTests/DfE.EducationProviderRegistry.PublicApi.Api.UnitTests.csproj" />
+  </Folder>
+</Solution>
