@@ -24,4 +24,4 @@ EXPOSE 8081
 
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "DfE.EducationProviderRegistry.IntegrationsApi.Api.dll"]
+ENTRYPOINT ["dotnet", "DfE.EducationProviderRegistry.PublicApi.Api.dll"]
