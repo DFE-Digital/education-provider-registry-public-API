@@ -64,6 +64,7 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         dockerfile-path: ./src/DfE.EducationProviderRegistry.PublicApi.Api/Dockerfile
         context: .
+        secret-files: nuget_config=./NuGet.config
         docker-repository: ${{ env.DOCKER_REPOSITORY }}
         max-cache: true
         reuse-cache: true
