@@ -30,7 +30,7 @@ jobs:
       uses: DFE-Digital/github-actions/build-docker-image@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        dockerfile-path: ./src/DfE.EducationProviderRegistry.IntegrationsApi.Api/Dockerfile
+        dockerfile-path: ./src/DfE.EducationProviderRegistry.PublicApi.Api/Dockerfile
         context: .
         docker-repository: ${{ env.DOCKER_REPOSITORY }}
         max-cache: true
