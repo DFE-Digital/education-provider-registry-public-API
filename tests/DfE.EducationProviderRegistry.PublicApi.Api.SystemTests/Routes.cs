@@ -3,6 +3,6 @@
 public static class Routes
 {
     private const string EstablishmentsV1Base = "/api/v1/establishments";
-    public static Uri GetEstablishments => new(EstablishmentsV1Base);
-    public static Uri GetEstablishmentsByUrn(string urn) => new(EstablishmentsV1Base + $"/{urn}");
+    public static Uri GetEstablishments => new(EstablishmentsV1Base, UriKind.Relative);
+    public static Uri GetEstablishmentsByUrn(string urn) => new($"{EstablishmentsV1Base}/{urn}", UriKind.Relative);
 }
