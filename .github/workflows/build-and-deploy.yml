@@ -129,6 +129,9 @@ jobs:
           coverage-report-path: coverage-sonar/SonarQube.xml
           # sonarscan-exclusions: "src/**/wwwroot/css/site.css"
 
+    - name: Run API System Tests
+      run: |
+        dotnet test tests/DfE.EducationProviderRegistry.PublicApi.Api.SystemTests
 #  deploy-review-app:
 #    name: Deployment To Review
 #    concurrency: deploy_review_${{ github.event.pull_request.number }}
