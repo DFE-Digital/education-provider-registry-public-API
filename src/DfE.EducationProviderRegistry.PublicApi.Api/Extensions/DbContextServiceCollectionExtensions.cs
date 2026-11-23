@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
-namespace DfE.EducationProviderRegistry.IntegrationsApi.Api.Extensions;
+namespace DfE.EducationProviderRegistry.PublicApi.Api.Extensions;
 
 internal static class DatabaseServiceCollectionExtensions
 {

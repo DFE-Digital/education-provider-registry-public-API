@@ -2,10 +2,9 @@
 using DfE.Core.Libraries.CleanArchitecture.Application;
 using DfE.EducationProviderRegistry.Core.Query.Establishments.Application.Model;
 using DfE.EducationProviderRegistry.Core.Query.Establishments.Application.UseCases.GetEstablishmentByUrn;
-using DfE.EducationProviderRegistry.IntegrationsApi.Api.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DfE.EducationProviderRegistry.IntegrationsApi.Api.Features.Establishments;
+namespace DfE.EducationProviderRegistry.PublicApi.Api.Features.Establishments;
 
 [ApiVersion(1)]
 [Route("api/v{version:apiVersion}/establishments")]

@@ -9,11 +9,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DfE.Core.Libraries.Testing" />
+    <PackageReference Include="DfE.EducationProviderRegistry.Core.Query.Contracts.TestDoubles" />
+    <PackageReference Include="DfE.EducationProviderRegistry.Core.Query.Test.Database" />
+    <PackageReference Include="Moq" />
     <PackageReference Include="xunit.v3.mtp-v2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DfE.EducationProviderRegistry.IntegrationsApi.Api\DfE.EducationProviderRegistry.PublicApi.Api.csproj" />
+    <ProjectReference Include="..\..\src\DfE.EducationProviderRegistry.PublicApi.Api\DfE.EducationProviderRegistry.PublicApi.Api.csproj" />
   </ItemGroup>
 
 </Project>

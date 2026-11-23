@@ -1,4 +1,4 @@
-﻿namespace DfE.EducationProviderRegistry.IntegrationsApi.Api.Controllers;
+﻿namespace DfE.EducationProviderRegistry.PublicApi.Api.Features.Establishments;
 
 #nullable disable
 public sealed record Establishment

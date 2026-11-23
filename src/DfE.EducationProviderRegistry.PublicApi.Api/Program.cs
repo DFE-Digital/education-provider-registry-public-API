@@ -1,6 +1,6 @@
 using DfE.EducationProviderRegistry.Core.Query.Establishments;
 using DfE.EducationProviderRegistry.Data.DatabaseModels.Context;
-using DfE.EducationProviderRegistry.IntegrationsApi.Api.Extensions;
+using DfE.EducationProviderRegistry.PublicApi.Api.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 

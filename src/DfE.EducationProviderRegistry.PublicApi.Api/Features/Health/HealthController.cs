@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace DfE.EducationProviderRegistry.IntegrationsApi.Api.Features.Health;
+namespace DfE.EducationProviderRegistry.PublicApi.Api.Features.Health;
 
 
 [Route("health")]
