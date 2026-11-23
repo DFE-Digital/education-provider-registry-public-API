@@ -4,6 +4,8 @@ ARG DOTNET_VERSION=10.0
 FROM mcr.microsoft.com/dotnet/sdk:${DOTNET_VERSION} AS build
 ARG BUILD_CONFIGURATION=Release
 
+COPY ["src/Directory.Build.props", "src/"]
+COPY ["src/Directory.Packages.props", "src/"]
 COPY ["src/DfE.EducationProviderRegistry.PublicApi.Api/DfE.EducationProviderRegistry.PublicApi.Api.csproj", "src/DfE.EducationProviderRegistry.PublicApi.Api/"]
 RUN dotnet restore "./src/DfE.EducationProviderRegistry.PublicApi.Api/DfE.EducationProviderRegistry.PublicApi.Api.csproj"
 
