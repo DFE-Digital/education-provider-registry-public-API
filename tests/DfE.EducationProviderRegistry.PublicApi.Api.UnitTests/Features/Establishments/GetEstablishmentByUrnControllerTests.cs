@@ -2,8 +2,8 @@
 using DfE.Core.Libraries.Testing.Logger;
 using DfE.EducationProviderRegistry.Core.Query.Establishments.Application.Model;
 using DfE.EducationProviderRegistry.Core.Query.Establishments.Application.UseCases.GetEstablishmentByUrn;
-using DfE.EducationProviderRegistry.Core.Query.Test.Database.Data.Establishments;
 using DfE.EducationProviderRegistry.PublicApi.Api.Features.Establishments;
+using DfE.EducationProviderRegistry.PublicApi.Api.UnitTests.Features.Establishments.TestDoubles;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -229,28 +229,5 @@ public sealed class GetEstablishmentByUrnControllerTests
         Assert.Contains(
             $"Getting establishment with URN {expectedUrn}.",
             logger.Logs);
-    }
-}
-
-internal static class EstablishmentDetailsReadModelTestDoubles
-{
-    public static EstablishmentDetailsReadModel Stub()
-    {
-        EstablishmentDetailsBuilder builder = EstablishmentDetailsBuilder.Create();
-
-        EstablishmentDetailsModel model = builder.Build();
-
-        return new EstablishmentDetailsReadModel()
-        {
-            Establishment = model
-        };
-    }
-
-    internal static EstablishmentDetailsReadModel StubWithNoEstablishment()
-    {
-        return new EstablishmentDetailsReadModel()
-        {
-            Establishment = null
-        };
     }
 }
