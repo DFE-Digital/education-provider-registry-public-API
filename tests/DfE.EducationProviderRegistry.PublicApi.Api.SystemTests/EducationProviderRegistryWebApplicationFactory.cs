@@ -40,7 +40,7 @@ public sealed class EducationProviderRegistryWebApplicationFactory : WebApplicat
         builder.ConfigureHostConfiguration(config =>
         {
             config.AddInMemoryCollection([
-                new("eprweb-eprapi-dotnet-db-connection", _connectionString)
+                new("eprweb_eprapi_dotnet_db_connection", _connectionString)
             ]);
 
             _configureConfiguration?.Invoke(config);
