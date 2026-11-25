@@ -8,7 +8,7 @@ internal static class DatabaseServiceCollectionExtensions
 {
     public static IServiceCollection AddEducationProviderRegistryDbContext(this IServiceCollection services, IConfiguration configuration)
     {
-        const string ConnectionStringKey = "eprapi_eprdat_dotnet_db_connection";
+        const string ConnectionStringKey = "eprweb-eprapi-dotnet-db-connection";
 
         string connectionString =
             configuration[ConnectionStringKey] ??
