@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using DfE.EducationProviderRegistry.Core.Query.Establishments;
 using DfE.EducationProviderRegistry.Data.DatabaseModels.Context;
 using DfE.EducationProviderRegistry.PublicApi.Api.Extensions;
@@ -15,7 +16,8 @@ builder.Services.AddOpenApi();
 
 // Configure versioning
 builder.Services
-    .AddApiVersioning()
+    .AddApiVersioning((opts) =>
+        opts.ApiVersionReader = new UrlSegmentApiVersionReader())
     .AddMvc();
 
 // DbContext
